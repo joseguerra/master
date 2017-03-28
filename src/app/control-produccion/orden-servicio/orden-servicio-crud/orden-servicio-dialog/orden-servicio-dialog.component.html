@@ -1,0 +1,28 @@
+ <h3 md-dialog-title>Detener / Reiniciar Trabajo </h3>
+
+    <md-dialog-content>
+
+      <md-select placeholder="Razon" [(ngModel)]="selectedValue" name="food">
+          <md-option *ngFor="let razonDetenido of razonDetenidos" [value]="razonDetenido.numcodigorazon">
+            {{razonDetenido.vchdescripcion}}
+          </md-option>
+      </md-select>
+      <br>
+      <md-input-container class="example-full-width">
+      <textarea md-input placeholder="Notas"></textarea>
+      </md-input-container>
+    </md-dialog-content>
+
+    <p-dataTable [value]="hist" scrollable="true" scrollHeight="200px">
+        <p-header>Vertical</p-header>
+        <p-column field="pfecha" header="Fecha"></p-column>
+        <p-column field="phora" header="Hora"></p-column>
+        <p-column field="razon" header="Razon o "></p-column>
+    </p-dataTable>
+
+    <md-dialog-actions layout="row" layout-align="end center">
+      <button type="button" md-raised-button color="accent" 
+            (click)="dialogRef.close('Aceptar')">Aceptar</button>
+      <button type="button" md-button 
+            (click)="dialogRef.close('Cancelar')">Cancelar</button>    
+    </md-dialog-actions>

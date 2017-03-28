@@ -1,0 +1,9 @@
+version: "2"
+
+services:
+    frontend:
+         image: nginx
+         ports:
+                - "8089:80"
+         volumes:
+                - /Users/cesaralvarado/angular2/ctrl-prod/dist:/usr/share/nginx/html

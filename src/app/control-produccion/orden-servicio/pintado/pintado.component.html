@@ -1,0 +1,164 @@
+
+<div class="md-content" class="inset">
+    <div layout="column" layout-gt-sm="row">
+
+        <div flex-gt-sm="100">
+            <md-card>
+                <md-card-content>
+                     Ordenes por asignar 
+                     De : 
+                     <p-calendar [(ngModel)]="fecini" dateFormat="dd/mm/yy" (ngModelChange)="onChangeFecIni($event)" [defaultDate]="defaultDate" [readonlyInput]="true" [showIcon]="true" [locale]="LocaleSettings"></p-calendar>   
+                     Al :   
+                     <p-calendar [(ngModel)]="fecfin" dateFormat="dd/mm/yy" (ngModelChange)="onChangeFecFin($event)" [readonlyInput]="true" [showIcon]="true" [locale]="LocaleSettings"></p-calendar>   
+                </md-card-content>
+            </md-card>
+            
+            <md-card>
+                <md-card-content>
+
+                <!--<a [routerLink]="[user.id + '/edit']" md-menu-item>Edit</a>-->
+
+                    <p-dataTable [value]="ordenServicios" selectionMode="single" [(selection)]="selectedproduccion3" (onRowSelect)="onRowSelect($event)"
+                          [paginator]="false" [rows]="10" [responsive]="true" [contextMenu]="cm">
+                        <p-headerColumnGroup>
+                            <p-row>
+                                <p-column header="Numero" [style]="{'width': '28px','font-size':'12px'}"></p-column>
+                                <!--<p-column header="Numero" rowspan="2" [style]="{'width': '28px','font-size':'12px'}"></p-column>-->
+                                <p-column  [style]="{'width': '8px','font-size':'12px'}" >
+                                    <template pTemplate="header">
+                                        Llave <br> Buffer
+                                    </template>
+                                </p-column>
+
+                                <p-column header="Avance"  [style]="{'width': '28px','font-size':'12px'}"></p-column>
+                                <!--<p-column header="Avance" rowspan="2"  [style]="{'width': '28px','font-size':'12px'}"></p-column>-->
+
+                                 <p-column  [style]="{'width': '60px','font-size':'12px'}" >
+                                    <template pTemplate="header">
+                                        Cliente <br> Asesor
+                                    </template>
+                                </p-column>
+
+                                <p-column  [style]="{'width': '60px','font-size':'12px'}" >
+                                    <template pTemplate="header">
+                                        Vehiculo <br> Color Año 
+                                    </template>
+                                </p-column>
+                                
+                                 <p-column  [style]="{'width': '20px','font-size':'12px'}" >
+                                    <template pTemplate="header">
+                                        Placa <br>  KM 
+                                    </template>
+                                </p-column>
+
+                                 <p-column  [style]="{'width': '60px','font-size':'12px'}" >
+                                    <template pTemplate="header">
+                                        Requrimiento Principal <br> Garantia
+                                    </template>
+                                </p-column>
+
+                                <p-column header="Total" [style]="{'width': '10px','font-size':'12px'}"></p-column>
+                                <p-column header="CO" [style]="{'width': '10px','font-size':'12px'}"></p-column>
+                                <p-column header="CC" [style]="{'width': '10px','font-size':'12px'}"></p-column>
+                                <p-column header="CR" [style]="{'width': '10px','font-size':'12px'}"></p-column>
+                                <p-column header="SC" [style]="{'width': '10px','font-size':'12px'}"></p-column>
+                                <p-column header="SR" [style]="{'width': '10px','font-size':'12px'}"></p-column>
+                                <!--<p-column header="Precio Estimado" colspan="3"  [style]="{'width': '159px','font-size':'12px'}"></p-column>-->
+                            </p-row>
+                            <!--<p-row>-->
+                                <!--<p-column header="Mano de Obra"  [style]="{'width': '100px','font-size':'12px'}"></p-column>-->
+                                <!--<p-column header="Rpto/Mat."  [style]="{'width': '100px','font-size':'12px'}"></p-column>-->
+                                <!--<p-column header="Total"  [style]="{'width': '100px','font-size':'12px'}"></p-column>-->
+                            <!--</p-row>-->
+                        </p-headerColumnGroup>
+                                <p-column field="codigo" [style]="{'text-align': 'left'}"></p-column>
+                                <p-column field="llave" [style]="{'text-align': 'center'}" >
+                                    <!--<template let-file="rowData" pTemplate type="body">-->
+                                    <template let-file="rowData" pTemplate="type">
+                                        {{file.llave}} <br> {{file.buffer}}
+                                    </template>
+                                </p-column>
+
+                                <p-column field="fecha" [style]="{'text-align': 'center'}" >
+                                    <template let-file="rowData" pTemplate="type">
+                                        {{file.fechacreacion}} <br> {{file.horacreacion}}
+                                    </template>
+                                </p-column>
+
+                                <p-column field="cliente" [style]="{'text-align': 'left'}" >
+                                    <template let-file="rowData" pTemplate="type">
+                                        {{file.nombre}} <br> {{file.asesor}}
+                                    </template>
+                                </p-column>
+
+                                <p-column field="vehiculo" [style]="{'text-align': 'left'}" >
+                                    <template let-file="rowData" pTemplate="type">
+                                        {{file.carro}} <br> {{file.colores}}
+                                    </template>
+                                </p-column>
+
+                                <p-column field="placa" [style]="{'text-align': 'left'}" >
+                                    <template let-file="rowData" pTemplate="type">
+                                        {{file.placa}} <br> {{file.kilometraje}}
+                                    </template>
+                                </p-column>
+
+                                <p-column field="requerimiento" [style]="{'text-align': 'left'}" >
+                                    <template let-file="rowData" pTemplate="type">
+                                        {{file.observacion}} <br> {{file.garantia}}
+                                    </template>
+                                </p-column>
+
+
+                                <p-column field="total" [style]="{'text-align': 'left'}"></p-column>
+                                <p-column field="so" [style]="{'text-align': 'left'}"></p-column>
+                                <p-column field="cc" [style]="{'text-align': 'left'}"></p-column>
+                                <p-column field="cr" [style]="{'text-align': 'left'}"></p-column>
+                                <p-column field="sc" [style]="{'text-align': 'left'}"></p-column>
+                                <p-column field="sr" [style]="{'text-align': 'left'}"></p-column>
+                        <!--<footer>-->
+                            <!--<div class="ui-helper-clearfix" style="width:100%"><button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button></div>-->
+                        <!--</footer>-->
+                    </p-dataTable>
+                </md-card-content>
+            </md-card>
+        </div>
+    </div>
+
+</div>
+
+
+<!--<p-dialog header="Car Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">-->
+<p-dialog header="Car Details" [(visible)]="displayDialog" [responsive]="true" >
+
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="car">
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="vin">Vin</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="vin" [(ngModel)]="car.vin" /></div>
+        </div>
+        <!--<div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="brand">Year</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="brand" [(ngModel)]="car.year" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="brand">Brand</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="brand" [(ngModel)]="car.brand" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="color">Color</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="color" [(ngModel)]="car.color" /></div>
+        </div>-->
+    </div>
+    <p-header>
+        Header content here
+    </p-header>
+    Content
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+            <button md-button (click)="save()" color="accent">Grabar</button>
+            <button md-button (click)="delete()" >Salir</button>
+            <!--<button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>-->
+            <!--<button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>-->
+        </div>
+    </p-footer>
+</p-dialog>

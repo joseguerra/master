@@ -1,0 +1,104 @@
+
+<div class="md-content" flex md-scroll-y>
+
+
+ <div layout="column" layout-gt-sm="row" >
+
+    <div flex-gt-sm="93">
+
+        <md-card>
+
+                <md-card-content>
+
+                        <td-expansion-panel label="Orden de Servicio : {{codigo}}" sublabel="Datos Cliente : {{nombre}}    | Vehiculo : {{placa}}  {{carro}}">
+                        <form>
+                            <div layout="row" layout-margin>
+                                <md-input-container flex>
+                                <input md-input placeholder="Codigo" [(ngModel)]="codcliente" name="codcliente">
+                                </md-input-container>
+
+                                <md-input-container flex>
+                                <input md-input placeholder="Descripcion" disabled id="colores" [(ngModel)]="colores" name="colores">
+                                </md-input-container>
+                            </div>
+
+                            <div layout="row" layout-margin>
+                                <md-input-container flex>
+                                <input md-input placeholder="Direccion" disabled id="vchdireccion" [(ngModel)]="vchdireccion" name="vchdireccion">
+                                </md-input-container>
+
+                                <md-input-container flex>
+                                <input md-input placeholder="Año" ddisabled id="anio" [(ngModel)]="anio" name="anio">
+                                </md-input-container>
+                            </div>
+                        </form>
+                        </td-expansion-panel>  
+                </md-card-content>
+        </md-card>      
+    </div>  
+ </div>
+
+    <div layout="column" layout-gt-sm="row" >
+      <div flex-gt-sm="100">
+        <md-card>
+             <md-card-content>
+
+                    <p-dataTable [value]="data" selectionMode="single" [(selection)]="selectedproduccion3" (onRowSelect)="onRowSelect($event)"
+                    [paginator]="false" [rows]="10" [responsive]="true" [contextMenu]="cm">
+                        <p-headerColumnGroup>
+                            <p-row>
+                                <p-column header="Descripcion" rowspan="2" [style]="{'width': '250px','font-size':'12px'}"></p-column>
+                                <p-column header="H/H" rowspan="2"  [style]="{'width': '50px','font-size':'12px'}"></p-column>
+                                <p-column header="Avance" rowspan="2"  [style]="{'width': '52px','font-size':'12px'}"></p-column>
+                                <p-column header="Fecha" rowspan="2"  [style]="{'width': '61px','font-size':'12px'}"></p-column>
+                                <p-column header="Inicio" rowspan="2"  [style]="{'width': '55px','font-size':'12px'}"></p-column>
+                                <p-column header="Detener Iniciar" rowspan="2"  [style]="{'width': '55px','font-size':'12px'}"></p-column>
+                                <p-column header="Parcial" rowspan="2"  [style]="{'width': '55px','font-size':'12px'}"></p-column>
+                                <p-column header="Final" rowspan="2"  [style]="{'width': '55px','font-size':'12px'}"></p-column>
+                                <p-column header="TE" rowspan="2"  [style]="{'width': '55px','font-size':'12px'}"></p-column>
+                                <p-column header="H/HE" rowspan="2"  [style]="{'width': '55px','font-size':'12px'}"></p-column>
+                                <p-column header="Dif" rowspan="2"  [style]="{'width': '55px','font-size':'12px'}"></p-column>
+                            </p-row>
+                        </p-headerColumnGroup>
+                                <p-column field="descripcion" [style]="{'text-align': 'left'}"></p-column>
+                                <p-column field="hh" [style]="{'text-align': 'center'}" ></p-column>
+                                <p-column field="hh" [style]="{'text-align': 'center'}" ></p-column>
+                                <p-column field="fecha" [style]="{'text-align': 'center'}" ></p-column>
+                                <p-column styleClass="col-button" [style]="{'width': '60px','font-size':'12px'}" >
+                                    <template let-car="rowData" pTemplate="body">
+                                        <button md-mini-fab (click)="Star()">
+                                          <md-icon class="md-24">play_arrow</md-icon>
+                                        </button>
+                                    </template>
+                                </p-column>
+                                <p-column styleClass="col-button" [style]="{'width': '60px','font-size':'12px'}" >
+                                    <template let-car="rowData" pTemplate="body">
+                                        <button md-mini-fab (click)="Pausa()">
+                                          <md-icon class="md-24">play_circle_filled</md-icon>
+                                        </button>
+                                    </template>
+                                </p-column>
+                                <p-column field="parcial" [style]="{'text-align': 'center'}" ></p-column> 
+                                <p-column styleClass="col-button" [style]="{'width': '60px','font-size':'12px'}">
+                                    <template let-car="rowData" pTemplate="body">
+                                        <button md-mini-fab (click)="Stop()">
+                                          <md-icon class="md-24">stop</md-icon>
+                                        </button>
+                                    </template>
+                                </p-column>
+                                <p-column field="te"  [style]="{'text-align': 'center'}" ></p-column>
+                                <p-column field="hh"  [style]="{'text-align': 'center'}" ></p-column>
+                                <p-column field="dif" [style]="{'text-align': 'center'}"></p-column>
+                    </p-dataTable>
+
+                </md-card-content>
+
+        </md-card>    
+      </div>
+    </div>    
+
+</div>
+
+<button md-mini-fab (click)="Retornar()">
+    <md-icon class="md-24">arrow_back</md-icon>
+</button>
